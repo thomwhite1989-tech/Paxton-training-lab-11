@@ -21,5 +21,13 @@
 <section class="dashboard"><div><strong>Maglock</strong><strong id="doorStatus">Released</strong></div><small id="relayStatus">ACU: COM ↔ NC</small><small id="acuStatus">ACU offline</small><small id="contactsStatus">Glass NC · Fire NC</small></section>
 <section class="dashboard"><label for="fault"><strong>Fault scenarios</strong></label><select id="fault"><option value="none">Normal</option><option value="psu">PSU failure</option><option value="reader">Reader power fault</option><option value="rte">RTE NO failed open</option><option value="relay">ACU relay stuck NC</option><option value="glass">Break glass NC failed open</option><option value="fire">Fire I/O NC failed open</option><option value="cable">Maglock positive wire broken</option></select></section>
 <section class="dashboard"><div><strong>Installed wires</strong><span id="wireCount">0 wires</span></div><div id="wireList"></div></section>
-<p class="disclaimer">Training simulation only. Not a manufacturer-approved wiring guide or fire/escape-door safety design. Verify real installations against manufacturer documentation and applicable requirements.</p></main>
+<p class="disclaimer">Training simulation only. Not a manufacturer-approved wiring guide or fire/escape-door safety design. Verify real installations against manufacturer documentation and applicable requirements.</p></main><script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js")
+        .then(() => console.log("Offline mode ready"))
+        .catch(error => console.error("Offline setup failed:", error));
+    });
+  }
+</script>
 <script src="app.js" defer></script></body></html>
